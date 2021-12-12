@@ -60,22 +60,22 @@
 """
 
 
-def moving_average(len_size, list, smoothing_window):
+def moving_average(list, smoothing_window):
     result = []
-    first = sum(list[0: smoothing_window])/smoothing_window
-    result.append(first)
-    a = 1
-    while a <= len_size-smoothing_window:
-        result.append(
-            sum(list[a:a+smoothing_window])/smoothing_window
-        )
-        a+=1
+    working_sum = sum(list[0: smoothing_window])
+    result.append(working_sum/smoothing_window)
+    for i in range(0, len(list) - smoothing_window):
+        working_sum -= list[i]
+        working_sum += list[i+smoothing_window]
+        current_avg = working_sum/smoothing_window
+        result.append(current_avg)
     return result
+
 
 if __name__ == '__main__':
     len_size = int(input())
     list = [i for i in map(int, input().split())]
     smoothing_window = int(input())
-    result = moving_average(len_size, list, smoothing_window)
+    result = moving_average(list, smoothing_window)
     print(*result)
     
