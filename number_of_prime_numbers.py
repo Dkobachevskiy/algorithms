@@ -1,3 +1,5 @@
+"""Сколько простых чисел в этом столбце?"""
+
 def number_of_prime_numbers(list):
     number_prime = 0
     prime_list = [2,3,5,7]
