@@ -9,6 +9,9 @@ def even_numbers(list):
             a+=1
     return a
 
-lst = [randint(0, 1000) for i in range(1000000)]
+list_even = list(range(2,1001,2))
+list_odd = list(range(1,1000,2))
 
-print(even_numbers(lst))
+list_numbers = list_even + list_odd
+
+print(even_numbers(list_numbers))
